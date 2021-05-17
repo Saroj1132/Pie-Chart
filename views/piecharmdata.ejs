@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap-extended.css">
+    
+    
+</head>
+
+<body>
+    <input type="hidden" name="user" id="user" value="<%=noofuser%>">
+    <input type="hidden" name="month" id="month" value="<%=noofmonth%>">
+    <div>
+        <div>
+            <div>                 
+                <div> 
+
+                    <div>
+                            <div>
+                                <div class="card-header">
+                                    <h4 class="card-title">Total Users</h4>
+                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                    
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <canvas id="simple-pie-chart" height="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/app-assets/vendors/js/vendors.min.js"></script>
+    <script src="/app-assets/vendors/js/charts/chart.min.js"></script>
+
+    <script>
+        var month= $("#month").val();
+        var user= $("#user").val();
+
+        var months = month.split(',');
+        var users=user.split(',')
+
+        $(window).on("load", function(){
+        var ctx = $("#simple-pie-chart");
+
+        // Chart Options
+        var chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            responsiveAnimationDuration:500,
+            legend: {
+                position: 'bottom',
+            },
+        };
+
+        // Chart Data
+        var chartData = {
+            labels: months,
+            datasets: [{
+                //label: "My First dataset",
+                data: users,
+                backgroundColor: ['#00A5A8', '#626E82', '#FF7D4D','#FF4558', '#28D094'],
+            }]
+        };
+
+        var config = {
+            type: 'pie',
+
+            // Chart Options
+            options : chartOptions,
+
+            data : chartData
+        };
+
+        // Create the chart
+        var pieSimpleChart = new Chart(ctx, config);
+    })
+    </script>   
+    <script src="/assets/js/scripts.js"></script>
+</body>
+</html>

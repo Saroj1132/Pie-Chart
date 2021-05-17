@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+            
+            <%records.forEach(function(p){%>
+            <tr>
+                <td><%=p.Name%></td>
+                <td><%=p.Email%></td>
+                <td><a href="/listuser/<%=p._id%>">Delete User</a></td>
+            </tr>
+
+            <% }) %>
+    
+            
+        </table>
+        
+
+        <br>
+        <br>
+        <table>
+            <tr  rowspan="2">
+                <td>Click to go to <a href="/">Add User</a></td>
+                <td>Click to go to Delete <a href="/deleteuser">User List</a></td>
+            </tr>
+        </table>
+    </body>
+</html>
